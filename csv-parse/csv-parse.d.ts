@@ -117,6 +117,10 @@ declare module "csv-parse/types" {
         (options?: options): ParserStream;
         Parser: ParserConstructor;
     }
+
+    interface parseSync {
+        (input: string, options?: options): any;
+    }
 }
 
 declare module "csv-parse" {
@@ -128,9 +132,9 @@ declare module "csv-parse" {
 }
 
 declare module "csv-parse/lib/sync" {
-   import { options } from "csv-parse/types";
+   import { options, parseSync } from "csv-parse/types";
 
-   function parse (input: string, options?: options): any;
+   let parse: parseSync;
 
    export = parse;
 }
